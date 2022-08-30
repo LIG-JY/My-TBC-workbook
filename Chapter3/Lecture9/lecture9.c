@@ -18,6 +18,7 @@ int main()
     printf("me32 = %d\n", i32);
     printf("me32 = %" "d" "\n", i32);
     printf("me32 = %" PRId32 "\n", i32);
+    /* PRId32 : inttypes.h의 메크로 */
 
 
 	return 0;
