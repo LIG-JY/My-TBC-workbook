@@ -6,8 +6,13 @@ void draw(int n);	// ANSI function prototype declaration
 int main()
 {
 
+	int i = 5;
+	char c = '#';
+	float f = 7.1f;
 
-
+	draw(i);
+	draw(c); // parameter에 형변환이 일어납니다. char -> int로 promotion
+	draw(f); // parameter에 형변환이 일어납니다
 
 
 	/* Arguments vs. Parameters */
@@ -19,7 +24,9 @@ int main()
 
 void draw(int n)
 {
-
+	while (n-- > 0)
+		printf("*");
+	printf("\n");
 
 
 }
