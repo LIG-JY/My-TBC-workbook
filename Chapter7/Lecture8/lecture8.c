@@ -1,75 +1,50 @@
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
-#include <ctype.h>		// islower()
+#include <ctype.h>
 #include <stdbool.h>
-#include <iso646.h>		// and, or, not
-
-#define PERIOD '.'
+#define STOP '.'
 
 int main()
 {
-	/*	
-		Logical operators 
-		
-		&& : and
-		|| : or
-		!  : not
-	*/
-
-	bool test1 = 3 > 2 || 5 > 6; // true
-	bool test2 = 3 > 2 && 5 > 6; // false, 하나라도 false면 false
-	bool test3 = !(5 > 6); // true, equivalent to 5 <= 6
-
-
-	/* Character counting example */
 	char ch;
-	int count = 0;
-	while ((ch = getchar() != PERIOD))  // . 찍으면 
+	int n_chars = 0;
+	int n_lines = 0;
+	int n_words = 0;
+	bool word_flag = false;
+	bool line_flag = false;
+
+	printf("Enter text :\n");
+
+	while ((ch = getchar()) != STOP)
 	{
-		if (ch != '\n' && ch != ' ')  // 줄바꿈과 공백은 세지 않는다.
+		if (!isspace(ch))  // 공백이 아니라면
 		{
-			count++;
+			n_chars++;
+		}
+		if (!isspace(ch) && !line_flag)  // 줄을 바꾸고 처음 시작할 때 line 수를 증가시킵니다. 
+		// 이후로 line_flag가 true이면 !line_flag가 false이기 때문에 line 수는 변화하지 않습니다.
+		{
+			n_lines++;
+			line_flag = true;
+		}	
+		if (ch == '\n')  // 줄바꿈 기호이면, line_flag가 false가 되어, 다음 줄에서 첫 글자를 입력하면 line 수가 증가합니다.
+		{
+			line_flag = false;
+		}
+		if (!isspace(ch) && !word_flag)
+		{
+			n_words++;
+			word_flag = true;
+		}
+		if (isspace(ch))
+		{
+			word_flag = false;
 		}
 	}
-	printf("%d", count);
-
-
-	/*
-		Alternatives in  
-		&&	: and
-		||	: or
-		!	: not
-	*/
-	// and, or ,not을 쓸 수 있습니당. iso646 헤더를 불러오면 됩니다.
-
-	/* 
-		Precedence 
+		
+	printf("\n");
+	printf("Character = %d, Words = %d, Lines = %d\n", n_chars, n_words, n_lines);
 	
-		Check !, &&, !! in the operator precedence table
-		https://en.cppreference.com/w/c/language/operator_precedence
-	*/
-
-
-	/*
-		Short-circuit Evaluation
-		- Logical expressions are evaluated from left to right
-			
-	*/
-
-	int temp = (1 + 2) * (3 + 4);  // 논리연산자는 왼쪽에서 옆으로 계산합니다.
-
-
-	/* Ranges */ // 주의할 점!!
-	for (int i = 0; i < 100; i++)
-		if (i >= 10 && i <= 20)
-			printf("%d", i);
-
-	printf("\n")
-
-	for (int i = 0; i < 100; i++)
-		if (10 <= i <= 20)  
-			printf("%d", i);
-
 	return 0;
 }
+
