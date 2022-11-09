@@ -1,8 +1,4 @@
-#pragma once
+#pragma once // header guard
 
-
-
-
-
-// assume that we have many more longer functions
+void hi();  // header에는 정의만 해줍니다.
 

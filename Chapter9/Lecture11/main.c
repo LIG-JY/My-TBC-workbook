@@ -1,6 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
-
-//#include "my_print_functions.h"
+#include "my_print_functions.h"
 #include <stdio.h>
 
 int main()
@@ -9,6 +8,7 @@ int main()
 
 
 	printf("Hello!!");
+	hi();
 
 	return 0;
 }

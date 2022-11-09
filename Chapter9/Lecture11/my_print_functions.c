@@ -1,21 +1,9 @@
-#include "my_print_functions.h"
-
+#pragma once // header guard
+#include "my_print_functions.h"  // header를 include
 #include <stdio.h>
 
-void print_hello()
+void hi()
 {
-
-
+	printf("Hello\n");  // 실제 구현내용은 C파일을 따로 만든다.
 }
 
-void print_hi()
-{
-
-
-}
-
-void print_str(char* str)
-{
-
-
-}
