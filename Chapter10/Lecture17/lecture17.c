@@ -23,7 +23,8 @@ int main()
 	printf("Input array length : ");
 	scanf("%d", &n);
 
-	//float my_arr[n];//Note: cannot change length after declaration
+	/*float my_arr[n];*///Note: cannot change length after declaration (변수로 배열의 길이를 받는다는 것이지, 배열의 길이가 변하는 것은 아닙니다.)
+
 
 	return 0;
 }
