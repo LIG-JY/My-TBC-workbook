@@ -22,12 +22,17 @@ int main()
 		(unsigned long long) pt3, (unsigned long long) pt4,
 		(unsigned long long) "I am a string.");
 
+	printf("%llu I am a string. %p", (unsigned long long) "I am a string.", &"I am a string.");
+	printf("\n");
+	printf("%p %p %p ", pt2, pt3, pt4);
+	printf("\n");
+
 	printf("Stack high \t%llu %llu %llu \n", (unsigned long long) ar1,
 		(unsigned long long) ar2, (unsigned long long) ar3);
 
 	// 위의 출력문에서 stack과 rodat의 주소 배치를 각각 확인해야함. 각각 분류끼리 가까운 주소를 사용한다.
 	// 첫번째 printf문에서 pt2, pt3은 같은 rodata의 주소를 담고 있습니다. 그리고 "I am a string."을 직접 출력할 때도 같은 값이 나옵니다.
-	// >>> 이유 질문?
+	// text segement(인프런 질문 참고)에 I am a string.이라는 문자열이 올라가있고 그것을 사용한다.
 	// 두번째 prinf문에서 배열은 각각 메모리를 확보하고 있기 때문에 주소가 다르다.
 
 	/* Memory address check */
