@@ -5,20 +5,20 @@
 int main()
 {
 	int* ptr_backup;
-
+	printf("Dummy Output\n");
 	{
-		int n = 10000;
-		int* ptr = (int*)malloc(n*sizeof(int));
+		int n = 100000000;
+		int* ptr = (int*)malloc(n * sizeof(int));
+		
+		ptr_backup = ptr;  // backup
 
-		for (int i = 0; i < n; ++i)
-			ptr[i] = i + 1;
-
-		ptr_backup = ptr;
+		free(ptr);
+				
 	}
 
-	// what happens ?
-	printf("%d %d\n", ptr_backup[0], ptr_backup[1]);
-
+	// what happens ?	
+	//printf("%d %d\n", ptr_backup[0], ptr_backup[1]); -> 잃어버렸던 녀석 접근 가능
+	printf("Dummy Output\n");
 
 	return 0;
 }
