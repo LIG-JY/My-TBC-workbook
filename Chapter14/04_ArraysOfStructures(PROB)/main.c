@@ -15,7 +15,7 @@ char* s_gets(char* st, int n)
 	{
 		find = strchr(st, '\n');	// look for newline
 		if (find)					// if the address is not NULL
-			* find = '\0';			// place a null character there
+			*find = '\0';			// place a null character there
 		else
 			while (getchar() != '\n')
 				continue;			// dispose of rest of line
@@ -24,7 +24,7 @@ char* s_gets(char* st, int n)
 	return ret_val;
 }
 
-struct book 
+struct book
 {
 	char title[MAX_TITLE];
 	char author[MAX_AUTHOR];
@@ -39,17 +39,29 @@ int main()
 
 	while (1)
 	{
-		printf("Input a book title or press [Enter] to stop.\n>>");
 		//TODO: input title
+		printf("Input a book title or press [Enter] to stop.\n>>");
+		char* title;
+		title = fgets(library[count].title, MAX_TITLE, stdin);
 		//TODO: break if the first character of the input title is '\0'
+		if (title[0] == '\0' || title[0] == '\n')
+			break;
 
-		printf("Input the author.\n>>");
 		//TODO: input author name
-
-		printf("Input the price.\n>>");
+		printf("Input the author.\n>>");
+		char* author;
+		title = fgets(library[count].author, MAX_AUTHOR, stdin);
+		
 		//TODO: input price
+		printf("Input the price.\n>>");
+		int flag;
+		flag = scanf("%f", &(library[count].price));
+		
 		//TODO: clear buffer
+		int c;
 
+		while ((c = getchar()) != '\n' && c != EOF) {}
+		
 		count++;
 
 		if (count == MAX_BOOKS)
@@ -63,7 +75,7 @@ int main()
 	{
 		printf("\nThe list of books:\n");
 		for (int index = 0; index < count; index++)
-			printf("\"%s\" written by %s: $%.1f\n", 
+			printf("\"%s\" written by %s: $%.1f\n",
 				library[index].title, library[index].author, library[index].price);
 	}
 	else
