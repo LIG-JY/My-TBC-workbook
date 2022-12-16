@@ -29,7 +29,7 @@ int main(void)
 	girl_Freind++;  // 포인터연산
 
 	printf("address of pointer girl_Freind is %lld\n and member of member is %s\n",
-		(long long)girl_Freind, girl_Freind->full_name.given);
+		(long long)girl_Freind, (*girl_Freind).full_name.given);
 
 	return 0;
 }
